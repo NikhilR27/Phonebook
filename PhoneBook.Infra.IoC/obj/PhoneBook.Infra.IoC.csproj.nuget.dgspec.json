@@ -1,0 +1,271 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.IoC/PhoneBook.Infra.IoC.csproj": {}
+  },
+  "projects": {
+    "/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/PhoneBook.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/PhoneBook.Application.csproj",
+        "projectName": "PhoneBook.Application",
+        "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/PhoneBook.Application.csproj",
+        "packagesPath": "/Users/abnr355/.nuget/packages/",
+        "outputPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abnr355/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj": {
+                "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj"
+              },
+              "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj": {
+                "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj",
+        "projectName": "PhoneBook.Domain",
+        "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj",
+        "packagesPath": "/Users/abnr355/.nuget/packages/",
+        "outputPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abnr355/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj",
+        "projectName": "PhoneBook.Infra.Data",
+        "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj",
+        "packagesPath": "/Users/abnr355/.nuget/packages/",
+        "outputPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abnr355/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj": {
+                "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.IoC/PhoneBook.Infra.IoC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.IoC/PhoneBook.Infra.IoC.csproj",
+        "projectName": "PhoneBook.Infra.IoC",
+        "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.IoC/PhoneBook.Infra.IoC.csproj",
+        "packagesPath": "/Users/abnr355/.nuget/packages/",
+        "outputPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.IoC/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abnr355/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/PhoneBook.Application.csproj": {
+                "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/PhoneBook.Application.csproj"
+              },
+              "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj": {
+                "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Domain/PhoneBook.Domain.csproj"
+              },
+              "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj": {
+                "projectPath": "/Users/abnr355/Projects/PhoneBook/PhoneBook.Infra.Data/PhoneBook.Infra.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

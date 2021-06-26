@@ -1,0 +1,50 @@
+﻿<Properties StartupConfiguration="{89056AC4-D784-4A17-B02A-10F25E023BF8}|Default">
+  <MonoDevelop.Ide.ItemProperties.Presentation.PhoneBook.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PhoneBook.Infra.Data/Repository/BaseRespository.cs">
+    <Files>
+      <File FileName="PhoneBook.Infra.IoC/DependencyContainer.cs" Line="19" Column="13" />
+      <File FileName="PhoneBook.Application/Interfaces/IPhoneBookService.cs" Line="8" Column="39" />
+      <File FileName="PhoneBook.API/Startup.cs" Line="8" Column="30" />
+      <File FileName="PhoneBook.API/appsettings.json" Line="11" Column="43" />
+      <File FileName="PhoneBook.Infra.Data/Context/PhoneBookContext.cs" Line="7" Column="42" />
+      <File FileName="PhoneBook.API/Program.cs" Line="6" Column="27" />
+      <File FileName="PhoneBook.Infra.Data/Repository/BaseRespository.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PhoneBook" expanded="True">
+            <Node name="Infra.Data" expanded="True">
+              <Node name="PhoneBook.Infra.Data" expanded="True">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="PackageDependencies" expanded="True" />
+                </Node>
+                <Node name="Context" expanded="True" />
+                <Node name="Repository" expanded="True">
+                  <Node name="BaseRespository.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+            <Node name="Infra.IoC" expanded="True">
+              <Node name="PhoneBook.Infra.IoC" expanded="True">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="PackageDependencies" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+            <Node name="Presentation" expanded="True">
+              <Node name="PhoneBook.API" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

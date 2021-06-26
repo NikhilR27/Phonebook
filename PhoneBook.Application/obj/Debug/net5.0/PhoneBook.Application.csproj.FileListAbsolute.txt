@@ -1,0 +1,17 @@
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.csprojAssemblyReference.cache
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.AssemblyInfoInputs.cache
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.AssemblyInfo.cs
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.csproj.CoreCompileInputs.cache
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Application.deps.json
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Application.dll
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/ref/PhoneBook.Application.dll
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Application.pdb
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Domain.dll
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Domain.pdb
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.csproj.CopyComplete
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.dll
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/ref/PhoneBook.Application.dll
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/obj/Debug/net5.0/PhoneBook.Application.pdb
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Infra.Data.dll
+/Users/abnr355/Projects/PhoneBook/PhoneBook.Application/bin/Debug/net5.0/PhoneBook.Infra.Data.pdb
