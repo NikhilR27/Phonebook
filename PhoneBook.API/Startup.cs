@@ -34,6 +34,12 @@ namespace PhoneBook.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PhoneBook.API", Version = "v1" });
             });
+
+            services.AddCors(options => {
+                options.AddPolicy("cors", builder => {
+                    builder.AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +53,8 @@ namespace PhoneBook.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseRouting();
 
