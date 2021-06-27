@@ -13,16 +13,14 @@ namespace PhoneBook.Infra.IoC
     {
         public static IServiceCollection RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
-            // Data
-            services.AddDbContext<PhoneBookContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
-            
-            //services.AddTransient<IRepositoryBase<Phonebook>, RepositoryBase<Phonebook>>();
-            //services.AddTransient<IRepositoryBase<Entry>, RepositoryBase<Entry>>();
+            //Data
+            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            services.AddDbContext<DbContext, PhoneBookContext>((Action<DbContextOptionsBuilder>)(options => options.UseNpgsql(connectionString)));
+            services.AddTransient<IRepositoryBase<Phonebook>, RepositoryBase<Phonebook>>();
+            services.AddTransient<IRepositoryBase<Entry>, RepositoryBase<Entry>>();
 
-            //// Application
-            //services.AddTransient<IPhoneBookService, PhoneBookService>();
-
+            //Application
+            services.AddTransient<IPhoneBookService, PhoneBookService>();
             return services;
         }
     }

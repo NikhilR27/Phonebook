@@ -7,7 +7,9 @@ namespace PhoneBook.Application.Interfaces
 {
     public interface IPhoneBookService
     {
-        Task<IEnumerable<Phonebook>> GetPhoneBookEntriesAsync();
-        Task InsertEntryAsync(Entry entry);  
+        Task<IEnumerable<Phonebook>> GetPhonebooks();
+        Task<IEnumerable<Entry>> GetPhonebookEntries();
+        Task<IEnumerable<Entry>> GetPhonebookEntriesBySearchString(string searchString);
+        Task InsertEntryAsync(Entry entry);
     }
 }

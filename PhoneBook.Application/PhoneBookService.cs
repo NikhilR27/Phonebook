@@ -12,20 +12,29 @@ namespace PhoneBook.Application
         private readonly IRepositoryBase<Phonebook> _phonebookRepository;
         private readonly IRepositoryBase<Entry> _phonebookEntryRepository;
 
-        public PhoneBookService(IRepositoryBase<Phonebook> phonebookRepository, IRepositoryBase<Entry> phonebookEntryRepository)
+        public PhoneBookService(
+            IRepositoryBase<Phonebook> phonebookRepository,
+            IRepositoryBase<Entry> phonebookEntryRepository)
         {
-            _phonebookRepository = phonebookRepository;
-            _phonebookEntryRepository = phonebookEntryRepository;
+            this._phonebookRepository = phonebookRepository;
+            this._phonebookEntryRepository = phonebookEntryRepository;
         }
 
-        public Task<IEnumerable<Phonebook>> GetPhoneBookEntriesAsync()
+        public Task<IEnumerable<Phonebook>> GetPhonebooks() => this._phonebookRepository.GetAllAsync();
+
+        public async Task<IEnumerable<Entry>> GetPhonebookEntries()
         {
-            return _phonebookRepository.GetAllAsync();
+            IEnumerable<Entry> allAsync = await this._phonebookEntryRepository.GetAllAsync();
+            return allAsync;
         }
 
-        public Task InsertEntryAsync(Entry entry)
+        public async Task<IEnumerable<Entry>> GetPhonebookEntriesBySearchString(
+            string searchString)
         {
-            return _phonebookEntryRepository.CreateAsync(entry);
+            IEnumerable<Entry> byConditionAsync = await this._phonebookEntryRepository.GetByConditionAsync((Expression<Func<Entry, bool>>)(x => x.Name.Contains(searchString) || x.Number.Contains(searchString)));
+            return byConditionAsync;
         }
+
+        public Task InsertEntryAsync(Entry entry) => this._phonebookEntryRepository.CreateAsync(entry);
     }
 }
