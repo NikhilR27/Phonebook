@@ -16,25 +16,29 @@ namespace PhoneBook.Application
             IRepositoryBase<Phonebook> phonebookRepository,
             IRepositoryBase<Entry> phonebookEntryRepository)
         {
-            this._phonebookRepository = phonebookRepository;
-            this._phonebookEntryRepository = phonebookEntryRepository;
+            _phonebookRepository = phonebookRepository;
+            _phonebookEntryRepository = phonebookEntryRepository;
         }
 
-        public Task<IEnumerable<Phonebook>> GetPhonebooks() => this._phonebookRepository.GetAllAsync();
+        public async Task<IEnumerable<Phonebook>> GetPhonebooks()
+        {
+            return await _phonebookRepository.GetAllAsync();
+        }
 
         public async Task<IEnumerable<Entry>> GetPhonebookEntries()
         {
-            IEnumerable<Entry> allAsync = await this._phonebookEntryRepository.GetAllAsync();
-            return allAsync;
+            return await _phonebookEntryRepository.GetAllAsync();
         }
 
         public async Task<IEnumerable<Entry>> GetPhonebookEntriesBySearchString(
             string searchString)
         {
-            IEnumerable<Entry> byConditionAsync = await this._phonebookEntryRepository.GetByConditionAsync((Expression<Func<Entry, bool>>)(x => x.Name.Contains(searchString) || x.Number.Contains(searchString)));
-            return byConditionAsync;
+            return await _phonebookEntryRepository.GetByConditionAsync(x => x.Name.Contains(searchString) || x.Number.Contains(searchString));
         }
 
-        public Task InsertEntryAsync(Entry entry) => this._phonebookEntryRepository.CreateAsync(entry);
+        public async Task InsertEntryAsync(Entry entry)
+        {
+            await _phonebookEntryRepository.CreateAsync(entry);
+        }
     }
 }

@@ -1,16 +1,40 @@
 version: '3.4'
 
+networks:
+  phonebook-app:
+    driver: bridge
+
 services:
   db:
-    image: "mcr.microsoft.com/mssql/server:2017-latest"
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=C1bDigital123
+      POSTGRES_DB: phonebookdb
+      POSTGRES_PASSWORD: dbuserpwd123
+      POSTGRES_USER: dbuser
+    image: postgres:latest
+    networks:
+      - phonebook-app
+    ports:
+      - "7999:5432"
+    restart: always
+    volumes:
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - db_volume:/var/lib/postgresql/data
 
   phonebook.api:
-    image: ${DOCKER_REGISTRY-}phonebook
     build:
       context: .
       dockerfile: PhoneBook.API/Dockerfile
     depends_on:
-      - db
+        - "db"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '443'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DB_CONNECTION_STRING: host=db;port=7999;database=phonebookdb;username=dbuser;password=dbuserpwd123
+    networks:
+      - phonebook-app  
+    ports:
+    - "8000:80"
+
+volumes:
+  db_volume:

@@ -10,45 +10,53 @@ namespace PhoneBook.Infra.Data.Repository
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : BaseEntity
     {
-        protected DbContext Context { get; set; }
+        protected DbContext DbContext { get; set; }
 
-        public RepositoryBase(DbContext dbContext) => this.Context = dbContext;
+        public RepositoryBase(DbContext dbContext)
+        {
+            this.DbContext = dbContext;
+        }
 
         public async Task<IEnumerable<T>> GetAllAsync(string[] includes = null)
         {
-            IQueryable<T> result = this.Context.Set<T>().AsNoTracking<T>().AsQueryable<T>();
-            List<T> listAsync = await result.ToListAsync<T>();
-            IEnumerable<T> objs = (IEnumerable<T>)listAsync;
-            result = (IQueryable<T>)null;
-            return objs;
+            IQueryable<T> result = DbContext.Set<T>().AsNoTracking().AsQueryable();
+
+            if (includes != null)
+            {
+                result = includes.Aggregate(result, (current, include) => current.Include(include));
+            }
+
+            return await result.ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetByConditionAsync(
-            Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> GetByConditionAsync(Expression<Func<T, bool>> expression, string[] includes = null)
         {
-            IQueryable<T> result = this.Context.Set<T>().Where<T>(expression).AsNoTracking<T>().AsQueryable<T>();
-            List<T> listAsync = await result.ToListAsync<T>();
-            IEnumerable<T> objs = (IEnumerable<T>)listAsync;
-            result = (IQueryable<T>)null;
-            return objs;
+            IQueryable<T> result = DbContext.Set<T>().Where(expression).AsNoTracking().AsQueryable();
+
+            if (includes != null)
+            {
+                result = includes.Aggregate(result, (current, include) => current.Include(include));
+            }
+
+            return await result.ToListAsync();
         }
 
         public async Task CreateAsync(T entity)
         {
-            EntityEntry<T> entityEntry = await this.Context.Set<T>().AddAsync(entity);
-            int num = await this.Context.SaveChangesAsync();
+            await DbContext.Set<T>().AddAsync(entity);
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(T entity)
         {
-            this.Context.Entry<T>(entity).State = EntityState.Modified;
-            int num = await this.Context.SaveChangesAsync();
+            DbContext.Entry(entity).State = EntityState.Modified;
+            await DbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(T entity)
         {
-            this.Context.Set<T>().Remove(entity);
-            int num = await this.Context.SaveChangesAsync();
+            DbContext.Set<T>().Remove(entity);
+            await DbContext.SaveChangesAsync();
         }
     }
 }
