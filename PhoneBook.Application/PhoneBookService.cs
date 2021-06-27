@@ -22,7 +22,7 @@ namespace PhoneBook.Application
 
         public async Task<IEnumerable<Phonebook>> GetPhonebooks()
         {
-            return await _phonebookRepository.GetAllAsync();
+            return await _phonebookRepository.GetAllAsync(new string[] { "Entries" });
         }
 
         public async Task<IEnumerable<Entry>> GetPhonebookEntries()

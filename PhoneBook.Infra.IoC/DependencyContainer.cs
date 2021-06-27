@@ -16,7 +16,7 @@ namespace PhoneBook.Infra.IoC
         {
             //Data
             string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
-            services.AddDbContext<DbContext, PhoneBookContext>((Action<DbContextOptionsBuilder>)(options => options.UseNpgsql(connectionString)));
+            services.AddDbContext<DbContext, PhoneBookContext>(options => options.UseNpgsql(connectionString));
             services.AddTransient<IRepositoryBase<Phonebook>, RepositoryBase<Phonebook>>();
             services.AddTransient<IRepositoryBase<Entry>, RepositoryBase<Entry>>();
 
