@@ -17,6 +17,7 @@ namespace PhoneBook.API
 {
     public class Startup
     {
+        const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -37,10 +38,21 @@ namespace PhoneBook.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PhoneBook.API", Version = "v1" });
             });
 
-            services.AddCors(options => {
-                options.AddPolicy("cors", builder => {
-                    builder.AllowAnyHeader().AllowAnyOrigin();
-                });
+            services.AddCors(options =>
+            {
+                string allowedOrigins = Configuration.GetValue<string>("AllowedHosts");
+
+                if (!string.IsNullOrEmpty(allowedOrigins))
+                {
+                    var origins = allowedOrigins.Split(";");
+                    options.AddPolicy(name: MyAllowSpecificOrigins,
+                                      builder =>
+                                      {
+                                          builder.WithOrigins(origins)
+                                                .AllowAnyHeader()
+                                                .AllowAnyMethod();
+                                      });
+                }
             });
         }
 
@@ -56,9 +68,9 @@ namespace PhoneBook.API
 
             app.UseHttpsRedirection();
 
-            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 
