@@ -22,7 +22,8 @@ namespace PhoneBook.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", (object)"en_US.utf8");
-            modelBuilder.HasCollation("my_collation", "und-u-ks-level2", "icu", new bool?(false));
+            modelBuilder.HasCollation("my_collation", "und-u-ks-level2", "icu", false); ;
+
             modelBuilder.Entity<Entry>(entity =>
             {
                 entity.ToTable("entry");

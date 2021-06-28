@@ -30,8 +30,7 @@ namespace PhoneBook.Application
             return await _phonebookEntryRepository.GetAllAsync();
         }
 
-        public async Task<IEnumerable<Entry>> GetPhonebookEntriesBySearchString(
-            string searchString)
+        public async Task<IEnumerable<Entry>> GetPhonebookEntriesBySearchString(string searchString)
         {
             return await _phonebookEntryRepository.GetByConditionAsync(x => x.Name.Contains(searchString) || x.Number.Contains(searchString));
         }

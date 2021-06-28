@@ -28,6 +28,17 @@ namespace PhoneBook.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:9000")
+                                             .AllowAnyHeader()
+                                             .AllowAnyMethod();
+                                  });
+            });
+
             RegisterServices(services, Configuration);
 
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -36,23 +47,6 @@ namespace PhoneBook.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PhoneBook.API", Version = "v1" });
-            });
-
-            services.AddCors(options =>
-            {
-                string allowedOrigins = Configuration.GetValue<string>("AllowedHosts");
-
-                if (!string.IsNullOrEmpty(allowedOrigins))
-                {
-                    var origins = allowedOrigins.Split(";");
-                    options.AddPolicy(name: MyAllowSpecificOrigins,
-                                      builder =>
-                                      {
-                                          builder.WithOrigins(origins)
-                                                .AllowAnyHeader()
-                                                .AllowAnyMethod();
-                                      });
-                }
             });
         }
 
@@ -65,8 +59,6 @@ namespace PhoneBook.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PhoneBook.API v1"));
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
