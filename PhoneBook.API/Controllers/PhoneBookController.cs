@@ -24,9 +24,43 @@ namespace PhoneBook.API.Controllers
             _logger = logger;
         }
 
+        #region Phonebook
+        [Route("")]
+        [HttpGet]
+        public async Task<IActionResult> GetPhoneBooks()
+        {
+            try
+            {
+                return Ok(await _phoneBookService.GetPhonebooksAsync());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Something went wrong: GetPhoneBooks " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [Route("")]
+        [HttpPost]
+        public async Task<IActionResult> AddPhoneBook([FromBody] Phonebook phonebook)
+        {
+            try
+            {
+                await _phoneBookService.InsertPhonebooksAsync(phonebook);
+                return Ok(phonebook);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Something went wrong: GetPhoneBooks " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+        #endregion
+
+        #region Phonbook Entry
         [Route("entry")]
         [HttpPost]
-        public async Task<IActionResult> PostPhoneBookEntry([FromBody] Entry newEntry)
+        public async Task<IActionResult> AddPhonebookEntry([FromBody] Entry newEntry)
         {
             try
             {
@@ -39,7 +73,7 @@ namespace PhoneBook.API.Controllers
                     return BadRequest("Invalid Data");
                 }
 
-                await _phoneBookService.InsertEntryAsync(newEntry);
+                await _phoneBookService.InsertPhonebookEntryAsync(newEntry);
                 return Ok(newEntry);
             }
             catch (Exception ex)
@@ -49,13 +83,13 @@ namespace PhoneBook.API.Controllers
             }
         }
 
-        [Route("entry")]
+        [Route("{id}/entries")]
         [HttpGet]
-        public async Task<IActionResult> GetPhoneBookEntries()
+        public async Task<IActionResult> GetPhonebookEntries(int id)
         {
             try
             {
-                return Ok(await _phoneBookService.GetPhonebookEntries());
+                return Ok(await _phoneBookService.GetPhonebookEntriesAsync(id));
             }
             catch (Exception ex)
             {
@@ -64,34 +98,20 @@ namespace PhoneBook.API.Controllers
             }
         }
 
-        [Route("search")]
+        [Route("{id}/entries/search")]
         [HttpGet]
-        public async Task<IActionResult> GetPhoneBookEntriesBySearchCriteria([FromQuery] string searchString)
+        public async Task<IActionResult> GetPhonebookEntriesBySearchString(int id, [FromQuery] string searchString)
         {
             try
             {
-                return Ok(await _phoneBookService.GetPhonebookEntriesBySearchString(searchString));
+                return Ok(await _phoneBookService.GetPhonebookEntriesBySearchStringAsync(id, searchString));
             }
             catch (Exception ex)
             {
-                _logger.LogError("Something went wrong: GetPhoneBookEntriesBySearchCriteria " + ex.Message);
+                _logger.LogError("Something went wrong: GetPhonebookEntriesBySearchString " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
-        [Route("phonebook")]
-        [HttpGet]
-        public async Task<IActionResult> GetPhoneBooks()
-        {
-            try
-            {
-                return Ok(await _phoneBookService.GetPhonebooks());
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Something went wrong: GetPhoneBooks " + ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-        }
+        #endregion
     }
 }

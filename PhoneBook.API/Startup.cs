@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,13 +34,15 @@ namespace PhoneBook.API
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:9000")
+                                      builder.WithOrigins("http://localhost:9800")
                                              .AllowAnyHeader()
                                              .AllowAnyMethod();
                                   });
             });
 
             RegisterServices(services, Configuration);
+
+            //services.AddMvcCore().AddFluentValidation();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

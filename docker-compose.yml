@@ -19,26 +19,18 @@ services:
       - db_volume:/var/lib/postgresql/data
 
   phonebook.api:
+    image: phonebookapi
     build:
       context: .
       dockerfile: PhoneBook.API/Dockerfile
     depends_on:
         - "db"
     environment:
-        ASPNETCORE_URLS: "http://+:80"
         DB_CONNECTION_STRING: host=db;port=5432;database=phonebookdb;username=dbuser;password=dbuserpwd123
     networks:
       - phonebook-app  
     ports:
     - "8000:80"
-    
-  phonebook.ui:
-    image: ${DOCKER_REGISTRY-}phonebook
-    build:
-      context: .
-      dockerfile: PhoneBook.UI/Dockerfile
-    ports:
-    - "9000:80"
 
 volumes:
   db_volume:
