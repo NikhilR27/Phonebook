@@ -14,14 +14,11 @@ namespace PhoneBook.API.Controllers
     public class PhoneBookController : ControllerBase
     {
         private readonly IPhoneBookService _phoneBookService;
-        private readonly ILogger<PhoneBookController> _logger;
 
         public PhoneBookController(
-          IPhoneBookService phoneBookService,
-          ILogger<PhoneBookController> logger)
+          IPhoneBookService phoneBookService)
         {
             _phoneBookService = phoneBookService;
-            _logger = logger;
         }
 
         #region Phonebook
@@ -29,31 +26,15 @@ namespace PhoneBook.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPhoneBooks()
         {
-            try
-            {
-                return Ok(await _phoneBookService.GetPhonebooksAsync());
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Something went wrong: GetPhoneBooks " + ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            return Ok(await _phoneBookService.GetPhonebooksAsync());
         }
 
         [Route("")]
         [HttpPost]
         public async Task<IActionResult> AddPhoneBook([FromBody] Phonebook phonebook)
         {
-            try
-            {
-                await _phoneBookService.InsertPhonebooksAsync(phonebook);
-                return Ok(phonebook);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Something went wrong: GetPhoneBooks " + ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            await _phoneBookService.InsertPhonebooksAsync(phonebook);
+            return Ok(phonebook.Id);
         }
         #endregion
 
@@ -62,55 +43,22 @@ namespace PhoneBook.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPhonebookEntry([FromBody] Entry newEntry)
         {
-            try
-            {
-                if (newEntry == null)
-                    _logger.LogError($"Null {{nameof(Entry)}} object");
-
-                if (!ModelState.IsValid)
-                {
-                    _logger.LogError($"Invalid {{nameof(Entry)}} object");
-                    return BadRequest("Invalid Data");
-                }
-
-                await _phoneBookService.InsertPhonebookEntryAsync(newEntry);
-                return Ok(newEntry);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Something went wrong: PostPhoneBookEntry " + ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            await _phoneBookService.InsertPhonebookEntryAsync(newEntry);
+            return Ok(newEntry.Id);
         }
 
         [Route("{id}/entries")]
         [HttpGet]
         public async Task<IActionResult> GetPhonebookEntries(int id)
         {
-            try
-            {
-                return Ok(await _phoneBookService.GetPhonebookEntriesAsync(id));
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Something went wrong: GetPhoneBookEntries " + ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            return Ok(await _phoneBookService.GetPhonebookEntriesAsync(id));
         }
 
         [Route("{id}/entries/search")]
         [HttpGet]
         public async Task<IActionResult> GetPhonebookEntriesBySearchString(int id, [FromQuery] string searchString)
         {
-            try
-            {
-                return Ok(await _phoneBookService.GetPhonebookEntriesBySearchStringAsync(id, searchString));
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Something went wrong: GetPhonebookEntriesBySearchString " + ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            return Ok(await _phoneBookService.GetPhonebookEntriesBySearchStringAsync(id, searchString));
         }
         #endregion
     }

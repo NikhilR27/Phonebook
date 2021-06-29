@@ -29,6 +29,7 @@ namespace PhoneBook.Infra.IoC
 
             //Domain
             services.AddTransient<IValidator<Entry>, EntryValidator>();
+            services.AddTransient<IValidator<Phonebook>, PhonebookValidator>();
 
             return services;
         }
