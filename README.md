@@ -8,7 +8,7 @@
 ### Frameworks
 * DotNet 5
 * Entity Framework Core 6
-* Bootstrap Vue
+* Vuetify
 * axios
 
 ### Honourable Mentions
