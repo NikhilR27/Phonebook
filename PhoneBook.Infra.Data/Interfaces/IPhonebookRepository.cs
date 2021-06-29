@@ -1,5 +1,4 @@
-﻿using System;
-using PhoneBook.Domain;
+﻿using PhoneBook.Domain;
 using PhoneBook.Infra.Data.Repository;
 
 namespace PhoneBook.Infra.Data.Interfaces

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using PhoneBook.Application.Interfaces;
 using PhoneBook.Domain;
 using PhoneBook.Infra.Data.Interfaces;
-using PhoneBook.Infra.Data.Repository;
 
 namespace PhoneBook.Application
 {

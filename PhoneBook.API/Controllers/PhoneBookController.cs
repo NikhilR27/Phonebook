@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Application.Interfaces;
 using PhoneBook.Domain;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PhoneBook.API.Controllers

@@ -8,7 +8,7 @@ namespace PhoneBook.Domain.Validators
 		{
 			RuleFor(x => x.Id).NotNull();
 			RuleFor(x => x.Name).Length(1, 50).NotNull();
-			RuleFor(x => x.Number).Length(1, 20).NotNull().Must(x => int.TryParse(x, out var val) && val > 0).WithMessage("Invalid Phone Number."); ;
+			RuleFor(x => x.Number).Length(1, 20).NotNull().Must(x => int.TryParse(x, out int val) && val > 0).WithMessage("Invalid Phone Number."); ;
 		}
 	}
 }

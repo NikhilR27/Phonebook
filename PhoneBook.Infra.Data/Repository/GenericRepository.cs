@@ -14,7 +14,7 @@ namespace PhoneBook.Infra.Data.Repository
 
         public GenericRepository(DbContext dbContext)
         {
-            this.DbContext = dbContext;
+            DbContext = dbContext;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync(string[] includes = null)

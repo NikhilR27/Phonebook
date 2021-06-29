@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PhoneBook.Domain;
 
 namespace PhoneBook.Infra.Data.Context
@@ -11,7 +10,7 @@ namespace PhoneBook.Infra.Data.Context
         }
 
         public PhoneBookContext(DbContextOptions<PhoneBookContext> options)
-          : base((DbContextOptions)options)
+          : base(options)
         {
         }
 
@@ -21,7 +20,7 @@ namespace PhoneBook.Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", (object)"en_US.utf8");
+            modelBuilder.HasAnnotation("Relational:Collation", "en_US.utf8");
 
             modelBuilder.Entity<Entry>(entity =>
             {

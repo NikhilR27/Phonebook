@@ -1,9 +1,8 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace PhoneBook.Domain.Validators
 {
-	public class PhonebookValidator : AbstractValidator<Phonebook>
+    public class PhonebookValidator : AbstractValidator<Phonebook>
 	{
 		public PhonebookValidator()
 		{
