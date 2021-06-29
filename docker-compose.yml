@@ -42,7 +42,7 @@ services:
     networks:
       - phonebook-app  
     ports:
-    - "9800:8080"
+    - "9800:9800"
 volumes:
   db_volume:
 

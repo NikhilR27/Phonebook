@@ -22,4 +22,4 @@ RUN npm install
 RUN npm run build
 
 EXPOSE 9800
-CMD [ "http-server", "-p 9800", "dist" ]
+CMD [ "http-server", "-p9800", "dist" ]
