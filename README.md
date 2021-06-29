@@ -1,11 +1,10 @@
 <!-- GETTING STARTED -->
-## Build with:
+## Built with:
 * C# .NET
 * VueJs 2.X
 * PostgreSQL
 * Docker
 
-### Frameworks
 * DotNet 5
 * Entity Framework Core 6
 * Vuetify
@@ -32,4 +31,9 @@
 
 6. Navigate to http://localhost:9800 to view UI
 
-
+##API Endpoints
+`GET  /phonebook`
+`POST /phonebook`
+`GET  /api/phonebook/{id}/entries`
+`GET  /api/phonebook/{id}/entries/search/`
+`POST /api/phonebook/entry`
