@@ -1,14 +1,14 @@
 <!-- GETTING STARTED -->
 ## Built with:
 * C# .NET
+  * DotNet 5
+  * Entity Framework Core 6
 * VueJs 2.X
+  * Vuetify
+  * axios
 * PostgreSQL
 * Docker
-
-* DotNet 5
-* Entity Framework Core 6
-* Vuetify
-* axios
+  * docker-compose   
 
 ### Honourable Mentions
 * Clean Architecture
