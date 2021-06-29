@@ -1,17 +1,43 @@
 <template>
-    <b-container fluid class="container">
-      <b-row>
-        <b-col sm="4">
-          Please Select a Phone Book: <b-form-select v-if="!loading" v-model="phonebook" class="mb-3" :options="phonebooks" value-field="name" text-field="name" @change="onSelect()">
-          </b-form-select>
-        </b-col>
-        <b-col sm="8">
-          <b-table v-if="!loading" class="ml-5" striped hover :items="items">
-          </b-table>
-        </b-col>
-      </b-row>
-    </b-container>
-
+  <v-container fluid>
+      <v-row align="center">
+        <v-col
+          class="d-flex"
+          cols="12"
+          sm="6"
+        >
+          <v-select
+            :items="phonebooks"
+            v-model="phonebook"
+            item-text="name"
+            item-value="id"
+            bottom
+            autocomplete
+            label="Please select a Phonebook"
+            v-on:change="onSelect"
+          ></v-select>
+        </v-col>
+        <v-col
+          cols="12"
+          sm="6"
+          md="3"
+        >
+          <v-text-field
+            label="Search"
+            placeholder=""
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <div class="centre">
+        <v-data-table
+        v-if="phonebook != null"
+        :headers="headers"
+        :items="items"
+        item-key="name"
+        class="elevation-1"
+       ></v-data-table>
+      </div>
+  </v-container>
 </template>
 
 <script>
@@ -27,18 +53,32 @@ export default {
       phonebooks: [],
       phonebook: null,
       loading: true,
-      fields: ['Name', 'Number'],
       items: []
     }
   },
+  computed: {
+    headers () {
+      return [
+        {
+          text: 'Name',
+          align: 'start',
+          sortable: true,
+          value: 'name',
+        },
+        {
+          text: 'Number',
+          value: 'number'
+        }
+      ]
+    }
+  },
   methods: {
-    onSelect(){
-      this.items = this.phonebook.entries;
-      console.log(this.items);
+    onSelect(value){
+      this.items = this.phonebooks.find(x => x.id == value).entries;
     }
   },
   beforeMount(){
-    axios.get('/phonebook/phonebook')
+    axios.get('/phonebook')
     .then(resp => {
         this.phonebooks = (resp.data);
     })
@@ -68,5 +108,12 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
 }
 </style>

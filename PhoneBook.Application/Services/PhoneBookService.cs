@@ -35,7 +35,7 @@ namespace PhoneBook.Application
 
         public async Task<IEnumerable<Entry>> GetPhonebookEntriesAsync(int id)
         {
-            return await _phonebookEntryRepository.GetByConditionAsync(x => x.Id == id);
+            return await _phonebookEntryRepository.GetByConditionAsync(x => x.PhonebookId == id);
         }
 
         public async Task<IEnumerable<Entry>> GetPhonebookEntriesBySearchStringAsync(int id, string searchString)

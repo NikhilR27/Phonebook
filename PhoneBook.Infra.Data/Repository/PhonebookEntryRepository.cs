@@ -17,7 +17,7 @@ namespace PhoneBook.Infra.Data.Repository
         // Lets keep the Services clean - EF functions should remain in the Repository layer
         public async Task<IEnumerable<Entry>> GetByPhonebookEntryBySearchStringAsync(int id, string searchString)
         {
-            IQueryable<Entry> result = DbContext.Set<Entry>().Where(x => x.Id == id && (EF.Functions.ILike(x.Name, $"%{searchString}%") || EF.Functions.ILike(x.Number, $"%{searchString}%"))).AsNoTracking().AsQueryable();
+            IQueryable<Entry> result = DbContext.Set<Entry>().Where(x => x.PhonebookId == id && (EF.Functions.ILike(x.Name, $"%{searchString}%") || EF.Functions.ILike(x.Number, $"%{searchString}%"))).AsNoTracking().AsQueryable();
             return await result.ToListAsync();
         }
     }
