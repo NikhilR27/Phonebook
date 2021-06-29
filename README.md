@@ -31,9 +31,13 @@
 
 6. Navigate to http://localhost:9800 to view UI
 
-##API Endpoints
+## API Endpoints
 `GET  /phonebook`
+
 `POST /phonebook`
+
 `GET  /api/phonebook/{id}/entries`
+
 `GET  /api/phonebook/{id}/entries/search/`
+
 `POST /api/phonebook/entry`
