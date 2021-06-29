@@ -1,30 +1,13 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
+  <v-app >
+    <v-app-bar app
+      color="white"
+      class="ps-md-6"
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Absa Logo"
-          class="shrink mr-2"
-          contain
-          src="./assets/logo.jpg"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="./assets/logo.jpg"
-          width="100"
-        />
-      </div>
-
+    <img src="@/assets/ABSA_Group_Logo.png"
+        width="65px"
+        class="img-fluid"/>
+      <v-toolbar-title>Phone Book</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-main>
