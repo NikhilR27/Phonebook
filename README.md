@@ -2,7 +2,7 @@
 ## Built with:
 * C# .NET
   * DotNet 5
-  * Entity Framework Core 6
+  * Entity Framework Core 5
   * XUnit
 * VueJs 2.X
   * Vuetify
