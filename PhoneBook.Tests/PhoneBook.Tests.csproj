@@ -17,14 +17,20 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Application\" />
     <None Remove="API\" />
+    <None Remove="Moq" />
+    <None Remove="Tools\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\" />
     <Folder Include="API\" />
+    <Folder Include="Tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.API\PhoneBook.API.csproj" />
+    <ProjectReference Include="..\PhoneBook.Application\PhoneBook.Application.csproj" />
   </ItemGroup>
 </Project>
