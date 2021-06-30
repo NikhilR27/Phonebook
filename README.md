@@ -3,6 +3,7 @@
 * C# .NET
   * DotNet 5
   * Entity Framework Core 6
+  * XUnit
 * VueJs 2.X
   * Vuetify
   * axios
